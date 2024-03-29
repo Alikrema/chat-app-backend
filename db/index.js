@@ -1,13 +1,13 @@
 const { Sequelize } = require('sequelize');
 const config = require('../config');
 
-const { host, port, user, password, database, dialect } = config.database;
-
-const sequelize = new Sequelize(database, user, password, {
+const { host, port, dialect, url } = config.local;
+const sequelize = new Sequelize(url {
   host,
   port,
   dialect,
 });
+
 
 async function testConnection() {
   try {
@@ -20,3 +20,4 @@ async function testConnection() {
 
 module.exports = { sequelize };
 
+testConnection();
