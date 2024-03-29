@@ -132,3 +132,7 @@ dist
 # .env
 .env
 .env.*
+
+# vim swap files
+*.swp
+*.swo
