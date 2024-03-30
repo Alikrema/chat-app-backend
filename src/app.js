@@ -4,7 +4,6 @@ const config = require('../config/index');
 const cors = require('cors');
 
 const port = config.port;
-console.log('port', config);
 app.use(cors());
 
 app.get('/', (req, res) => {
