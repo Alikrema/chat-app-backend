@@ -1,20 +1,19 @@
-const { Sequelize } = require('sequelize');
-const config = require('../config');
+const { Sequelize } = require("sequelize");
+const config = require("../config");
 
 const { host, port, dialect, url } = config.local;
-const sequelize = new Sequelize(url {
+const sequelize = new Sequelize(url, {
   host,
   port,
   dialect,
 });
 
-
 async function testConnection() {
   try {
     await sequelize.authenticate();
-    console.log('Connection has been established successfully.');
+    console.log("Connection has been established successfully.");
   } catch (error) {
-    console.error('Unable to connect to the database:', error);
+    console.error("Unable to connect to the database:", error);
   }
 }
 
