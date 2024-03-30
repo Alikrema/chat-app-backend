@@ -2,36 +2,46 @@ const { Model, DataTypes } = require('sequelize');
 
 class UserChatRoom extends Model {
   static associate(models) {
+    // Correcting foreign key references to align with the PostgreSQL table definitions
     UserChatRoom.belongsTo(models.User, {
-      foreignKey: 'user_id',
-      as: 'user', 
+      foreignKey: 'userId',
+      as: 'user',
     });
-
     UserChatRoom.belongsTo(models.ChatRoom, {
-      foreignKey: 'chatroom_id',
-      as: 'chatRoom', 
+      foreignKey: 'chatRoomId',
+      as: 'chatRoom',
     });
   }
 }
+
 module.exports = (sequelize) => {
   UserChatRoom.init({
-    user_id: {
+    // Adjusting to camelCase to match Sequelize conventions and the table structure
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    chatroom_id: {
+    chatRoomId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
     role: {
       type: DataTypes.STRING,
       defaultValue: 'member'
+    },
+    // Including createdAt and updatedAt to match the table structure
+    createdAt: {
+      type: DataTypes.DATE, // Mapping to 'timestamp with time zone'
+      allowNull: false
+    },
+    updatedAt: {
+      type: DataTypes.DATE, // Mapping to 'timestamp with time zone'
+      allowNull: false
     }
-    // No created_at or updated_at fields are defined, assuming this join table doesn't need them.
   }, {
     sequelize,
     modelName: 'UserChatRoom',
-    timestamps: false // This table does not use Sequelize's automatic timestamp columns
+    timestamps: true, // Adjusting to true to automatically handle createdAt and updatedAt
   });
 
   return UserChatRoom;

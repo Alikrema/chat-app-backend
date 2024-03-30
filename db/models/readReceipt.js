@@ -2,29 +2,41 @@ const { Model, DataTypes } = require('sequelize');
 
 class ReadReceipt extends Model {
   static associate(models) {
-    ReadReceipt.belongsTo(models.Message, { foreignKey: 'message_id' });
-    ReadReceipt.belongsTo(models.User, { foreignKey: 'user_id' });
+    // Adjust foreign keys to match the PostgreSQL table
+    ReadReceipt.belongsTo(models.Message, { foreignKey: 'messageId' }); // Adjust to 'messageId' to match the table
+    ReadReceipt.belongsTo(models.User, { foreignKey: 'userId' }); // Adjust to 'userId' to match the table
   }
 }
 
 module.exports = (sequelize) => {
   ReadReceipt.init({
-    message_id: {
+    // Sequelize automatically handles the id primary key
+    messageId: { // Adjust to camelCase to match Sequelize conventions and the table structure
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    user_id: {
+    userId: { // Adjust to camelCase to match Sequelize conventions and the table structure
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    read_at: {
+    readAt: { // Assuming read_at maps to readAt, adjusting to camelCase for consistency
       type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
+      defaultValue: DataTypes.NOW // Assuming you want to keep the default to the current timestamp
+    },
+    // Including createdAt and updatedAt to match the table structure
+    createdAt: {
+      type: DataTypes.DATE, // Sequelize maps this to 'timestamp with time zone'
+      allowNull: false
+    },
+    updatedAt: {
+      type: DataTypes.DATE, // Sequelize maps this to 'timestamp with time zone'
+      allowNull: false
     }
   }, {
     sequelize,
     modelName: 'ReadReceipt',
-    timestamps: false 
+    timestamps: true, // Adjusted to true to automatically handle createdAt and updatedAt
+    // Sequelize will automatically use the correct field names for createdAt and updatedAt
   });
 
   return ReadReceipt;
