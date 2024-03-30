@@ -12,4 +12,5 @@ module.exports = {
     dialect: process.env.DB_DIALECT,
     url: process.env.DB_URL,
   },
+  jwtKey: process.env.JWT_SECRET,
 };
