@@ -9,7 +9,6 @@ const createRoom = async (req, res) => {
   }
   const room = await ChatRoom.create({ name });
   const promises = members.map(async (member) => {
-    console.log("member", member);
     const user = await User.findOne({ where: { username: member } });
     if (!user) {
       return;
