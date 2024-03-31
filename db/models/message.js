@@ -43,6 +43,7 @@ module.exports = (sequelize) => {
       modelName: "Message",
       timestamps: true, // Enables automatic handling of createdAt and updatedAt by Sequelize
       // Since the fields match the default Sequelize behavior, custom fields are not necessary
+      tableName: "messages", // Ensuring the model matches the table name
     }
   );
 

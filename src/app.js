@@ -20,7 +20,7 @@ app.use(bodyParser.json({ limit: "50mb" }));
 
 app.use("/auth", require("./routes/auth"));
 app.use("/chat-room", require("./routes/chatRoom"));
-
+app.use("/messages", require("./routes/messages"));
 const server = http.createServer(app);
 
 setupSocketIo(server);
