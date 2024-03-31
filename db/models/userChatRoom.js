@@ -26,11 +26,6 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      role: {
-        type: DataTypes.STRING,
-        defaultValue: "member",
-      },
-      // Including createdAt and updatedAt to match the table structure
       createdAt: {
         type: DataTypes.DATE, // Mapping to 'timestamp with time zone'
         allowNull: false,
