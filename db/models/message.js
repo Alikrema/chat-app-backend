@@ -11,7 +11,7 @@ class Message extends Model {
 module.exports = (sequelize) => {
   Message.init(
     {
-      content: {
+      message: {
         type: DataTypes.STRING(255), // Changed from DataTypes.TEXT to match character varying(255)
         allowNull: false,
         field: "message", // Mapping the Sequelize field to the actual table column name
