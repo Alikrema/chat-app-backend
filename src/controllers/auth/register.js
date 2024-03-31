@@ -1,10 +1,9 @@
 const config = require("../../../config");
-const User = require("../../../db/models/user");
+const { User } = require("../../../db/models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const register = async (req, res) => {
-  console.log(req.body);
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ where: { username } });

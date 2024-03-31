@@ -1,7 +1,7 @@
 const config = require("../../../config");
-const User = require("../../../db/models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { User } = require("../../../db/models");
 
 const login = async (req, res) => {
   try {
