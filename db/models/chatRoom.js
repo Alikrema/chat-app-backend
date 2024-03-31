@@ -37,6 +37,7 @@ module.exports = (sequelize) => {
       modelName: "ChatRoom",
       timestamps: true, // Enables automatic handling of createdAt and updatedAt
       // Sequelize automatically uses the correct fields for createdAt and updatedAt if timestamps are true and fields are named in camelCase
+      tableName: "chat_rooms", // Adjusting to match the table name in PostgreSQL
     }
   );
 

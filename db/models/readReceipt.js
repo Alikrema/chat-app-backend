@@ -42,6 +42,7 @@ module.exports = (sequelize) => {
       modelName: "ReadReceipt",
       timestamps: true, // Adjusted to true to automatically handle createdAt and updatedAt
       // Sequelize will automatically use the correct field names for createdAt and updatedAt
+      tableName: "read_receipts",
     }
   );
 

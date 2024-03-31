@@ -44,6 +44,7 @@ module.exports = (sequelize) => {
       sequelize,
       modelName: "UserChatRoom",
       timestamps: true, // Adjusting to true to automatically handle createdAt and updatedAt
+      tableName: "chat_room_users",
     }
   );
 

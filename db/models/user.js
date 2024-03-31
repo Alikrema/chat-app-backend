@@ -6,8 +6,8 @@ class User extends Model {
     // and considering the table structure provided,
     // ensure foreign keys and relationships are correctly mapped in your models.
     User.hasMany(models.Message, { foreignKey: "userId" }); // Adjusted according to the foreign keys mentioned
-    User.belongsToMany(models.ChatGroup, {
-      through: "UserChatGroup",
+    User.belongsToMany(models.ChatRoom, {
+      through: "UserChatRoom",
       foreignKey: "userId",
     }); // Assuming 'userId' is the correct foreignKey
   }
@@ -44,8 +44,7 @@ module.exports = (sequelize) => {
       sequelize,
       modelName: "User",
       timestamps: true, // Enables automatic handling of createdAt and updatedAt
-      // No need to specify custom field names for createdAt and updatedAt
-      // since they match the PostgreSQL table column names exactly
+      tableName: "users",
     }
   );
 

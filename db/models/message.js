@@ -4,7 +4,7 @@ class Message extends Model {
   static associate(models) {
     // Adjusting foreign keys to match the PostgreSQL table
     Message.belongsTo(models.User, { foreignKey: "userId" }); // Changed from 'sender_id' to 'userId'
-    Message.belongsTo(models.ChatGroup, { foreignKey: "chatRoomId" }); // Changed from 'group_id' to 'chatRoomId'
+    Message.belongsTo(models.ChatRoom, { foreignKey: "chatRoomId" }); // Changed from 'group_id' to 'chatRoomId'
   }
 }
 
