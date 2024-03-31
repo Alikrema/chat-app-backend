@@ -1,6 +1,6 @@
 const { Server } = require("socket.io");
 const setupChatHandlers = require("./chat");
-
+const { EVENTS } = require("../constants");
 function setupSocketIO(server) {
   const io = new Server(server, {
     cors: {
@@ -9,14 +9,7 @@ function setupSocketIO(server) {
     },
   });
   io.on("connection", (socket) => {
-    console.log("A user connected");
-
-    // Setup all event handlers
     setupChatHandlers(socket, io);
-
-    socket.on("disconnect", () => {
-      console.log("User disconnected");
-    });
   });
 }
 
