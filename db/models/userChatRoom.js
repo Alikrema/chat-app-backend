@@ -5,11 +5,9 @@ class UserChatRoom extends Model {
     // Correcting foreign key references to align with the PostgreSQL table definitions
     UserChatRoom.belongsTo(models.User, {
       foreignKey: "userId",
-      as: "user",
     });
     UserChatRoom.belongsTo(models.ChatRoom, {
       foreignKey: "chatRoomId",
-      as: "chatRoom",
     });
   }
 }
