@@ -1,17 +1,22 @@
-const { ChatRoom, User } = require("../../../db/models");
+const { ChatRoom, UserChatRoom } = require("../../../db/models");
+const { col } = require("sequelize");
 
 const getRooms = async (req, res) => {
-  const rooms = await ChatRoom.findAll({
+  const { userId } = req;
+  const rooms = await UserChatRoom.findAll({
+    where: { userId },
+    attributes: [
+      [col("ChatRoom.id"), "id"],
+      [col("ChatRoom.name"), "name"],
+    ],
     include: [
       {
-        model: User,
-        as: "Users",
-        attributes: ["id", "username"],
-        through: { attributes: [] },
+        model: ChatRoom,
+        as: "ChatRoom",
+        attributes: [],
       },
     ],
   });
   res.json(rooms);
 };
-
 module.exports = getRooms;
