@@ -12,7 +12,8 @@ async function saveMessage(msg) {
       chatRoomId,
       userId: user.id,
     };
-    return await Message.create(messageDto);
+    const newMessage = await Message.create(messageDto);
+    return newMessage.dataValues;
   } catch (err) {
     return Promise.reject(err);
   }

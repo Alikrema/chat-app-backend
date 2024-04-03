@@ -1,11 +1,16 @@
 const { Message, User } = require("../../../db/models");
 const getChatRoomMessages = async (req, res) => {
   try {
-    console.log("sdsdda");
     const { chatRoomId } = req.params;
     const messages = await Message.findAll({
       where: { chatRoomId },
-      include: User,
+      include: [
+        {
+          model: User,
+          attributes: ["id", "username"],
+        },
+      ],
+      attributes: ["id", "message", "createdAt"],
     });
     res.status(200).json(messages);
   } catch (error) {
