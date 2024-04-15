@@ -1,17 +1,8 @@
-const { ChatRoom, User } = require("../../../db/models");
+const chatServices = require("../../services/chat-room");
 
 const getRoom = async (req, res) => {
   const { id } = req.params;
-  const room = await ChatRoom.findByPk(id, {
-    include: [
-      {
-        model: User,
-        as: "Users",
-        attributes: ["id", "username"],
-        through: { attributes: [] },
-      },
-    ],
-  });
+  const room = await chatServices.getRoom(id);
   res.json(room);
 };
 
